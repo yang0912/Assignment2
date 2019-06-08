@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createPost } from '../actions/postAction';
+import { addMessage, clearMessage } from '../actions/postActions';
 
 class PostForm extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class PostForm extends Component {
       body: this.state.body
     };
 
-    this.props.createPost(post);
+    this.props.addMessage(post);
   }
 
   render() {
@@ -57,6 +57,7 @@ class PostForm extends Component {
           </div>
           <br />
           <button type="submit">Submit</button>
+          <input value="Clear All" type="button" onClick={this.props.clearMessage} />
         </form>
       </div>
     );
@@ -64,7 +65,17 @@ class PostForm extends Component {
 }
 
 PostForm.propTypes = {
-  createPost: PropTypes.func.isRequired
+  addMessage: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createPost })(PostForm);
+const mapDispatchToProps = (dispatch) => {
+  return{
+    addMessage:(message) => {
+      dispatch(addMessage(message));
+    },
+    clearMessage:() => {
+      dispatch(clearMessage());
+    },
+  }
+}
+export default connect(null, mapDispatchToProps)(PostForm);
