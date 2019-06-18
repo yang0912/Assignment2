@@ -20,6 +20,11 @@ componentDidMount(){
   Axios.get('http://localhost:5000/messages').then(res => this.setState({messages: res.data})).catch(err => console.log(err));
 }
 
+insertMessage() {
+  Axios.post('http://localhost:5000/messages').then(res => this.setState({messages: res.data})).catch(err => console.log(err));
+}
+
+
 // function App() {
   render() {
     return (

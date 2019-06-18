@@ -1,7 +1,8 @@
-[{
-    "id": 1,
-    "content": "hello"
-},{
-    "id":2,
-    "content": "goodbye"
-}]
+{
+
+    "initialMessages": [
+        {"content":"hello1"},
+        {"content":"hello2"}]
+    ,
+    "messages":[]
+}

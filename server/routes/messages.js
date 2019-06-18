@@ -3,10 +3,6 @@ const router = express.Router()
 const message = require('../models/message')
 // Routes
 module.exports = router
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.json({message: 'hscsasdf'});
-// });
 
 router.get('/', async (req, res) => {
     await message.getMessages()
@@ -22,17 +18,25 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    await message.updateMessage()
-    .then(messages => res.json(messages))
+    await message.insertMessage(req.body)
+    .then(message => res.status(201).json({
+        message,
+    }))
+    .catch(err => res.status(500).json({ message: err.message }))
+})
+
+router.put('/:id', async (req, res) => {
+    const id = parseInt(req.params.id, 10)
+    await message.updateMessage(id, req.body)
+    .then(message => res.json({
+        message,
+    }))
     .catch(err => {
         if (err.status) {
             res.status(err.status).json({ message: err.message })
-        } else {
-            res.status(500).json({ message: err.message })
         }
+        res.status(500).json({ message: err.message })
     })
 })
-
-router.post('/', )
 
 module.exports = router;
