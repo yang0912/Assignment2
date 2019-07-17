@@ -63,6 +63,16 @@ app.get('/', (req, res) => {
     sendHTMLpage(req, res);
 })
 
+//Serve static assets if in production
+if(process.env.NODE_ENV === 'production'){
+    //set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+
 app.listen(process.env.PORT || 3000, function () {
     console.log('Example app listening on port ' + (process.env.PORT || 3000))
 })
