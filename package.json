@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-client": "webpack-dev-server",
-    "start": "nodemon --exec 'NODE_ENV=development node ./server/server.js'",
+    "start": "cd server && node run start",
     "postinstall": "webpack -p"
   },
   "author": "",

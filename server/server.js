@@ -18,6 +18,7 @@ console.log("1");
 mongoose.connect(url, {useNewUrlParser: true});
 console.log("2");
 
+
 let db = mongoose.connection;
 db.once('open', () => console.log('connected to the database'));
 console.log("3");
