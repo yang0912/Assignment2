@@ -6,7 +6,7 @@
   "scripts": {
     "dev-client": "webpack-dev-server",
     "start": "nodemon --exec 'NODE_ENV=development node ./server/server.js'",
-    "postinstall":"webpack -p"
+    "postinstall": "webpack -p"
   },
   "author": "",
   "license": "ISC",
