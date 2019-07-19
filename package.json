@@ -6,7 +6,7 @@
   "scripts": {
     "dev-client": "webpack-dev-server",
     "dev-server": "nodemon --exec 'NODE_ENV=development node ./server/server.js'",
-    "heroku-postbuild":"webpack -p"
+    "postinstall":"webpack -p"
   },
   "author": "",
   "license": "ISC",
